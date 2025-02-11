@@ -6,7 +6,7 @@ public interface IPieRepository
 {
     IEnumerable<Pie> AllPies { get; }
 
-    IEnumerable<Pie> PieOfTheWeek { get; }
+    IEnumerable<Pie> PiesOfTheWeek { get; }
 
     Pie? GetPieById(int pieId);
 

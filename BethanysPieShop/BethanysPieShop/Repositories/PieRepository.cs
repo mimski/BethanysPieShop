@@ -21,7 +21,7 @@ public class PieRepository : IPieRepository
         }
     }
 
-    public IEnumerable<Pie> PieOfTheWeek 
+    public IEnumerable<Pie> PiesOfTheWeek 
     {
         get
         {
