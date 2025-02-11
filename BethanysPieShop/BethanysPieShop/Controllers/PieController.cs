@@ -25,4 +25,16 @@ public class PieController : Controller
 
         return View(viewModel);
     }
+
+    public IActionResult Details(int id) 
+    { 
+        var pie = this.pieRepository.GetPieById(id);
+
+        if (pie == null)
+        {
+            return NotFound();
+        }
+
+        return View(pie);
+    }
 }
