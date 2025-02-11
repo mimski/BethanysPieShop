@@ -20,7 +20,7 @@ public class PieController : Controller
         var viewModel = new PieListViewModel
         (
             pies: this.pieRepository.AllPies,
-            currentCategory: "Cheese cakes"
+            currentCategory: "All pies"
         );
 
         return View(viewModel);
