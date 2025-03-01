@@ -1,0 +1,16 @@
+﻿using BethanysPieShop.Repositories;
+
+namespace BethanysPieShop.ViewModels;
+
+public class ShoppingCartViewModel
+{
+    public ShoppingCartViewModel(IShoppingCart shoppingCart, decimal shoppingCartTotal)
+    {
+        this.ShoppingCart = shoppingCart;
+        this.ShoppingCartTotal = shoppingCartTotal;
+    }
+
+    public IShoppingCart ShoppingCart { get; }
+
+    public decimal ShoppingCartTotal { get; }
+}
