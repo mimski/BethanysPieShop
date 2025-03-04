@@ -1,4 +1,5 @@
-﻿using BethanysPieShop.Repositories;
+﻿using BethanysPieShop.Models;
+using BethanysPieShop.Repositories;
 using BethanysPieShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,12 +16,27 @@ public class PieController : Controller
         this.categoryRepository = categoryRepository;
     }
 
-    public IActionResult List()
+    public IActionResult List(string category)
     {
+        IEnumerable<Pie> pies;
+        string? currentCategory;
+
+        if (string.IsNullOrEmpty(category))
+        {
+            pies = this.pieRepository.AllPies.OrderBy(p => p.PieId);
+            currentCategory = "All pies";
+        }
+        else
+        {
+            pies = this.pieRepository.AllPies.Where(p => p.Category.Name == category)
+                .OrderBy(p => p.PieId);
+            currentCategory = this.categoryRepository.AllCategories.FirstOrDefault(c => c.Name == category)?.Name;
+        }
+
         var viewModel = new PieListViewModel
         (
-            pies: this.pieRepository.AllPies,
-            currentCategory: "All pies"
+            pies: pies,
+            currentCategory: currentCategory
         );
 
         return View(viewModel);
